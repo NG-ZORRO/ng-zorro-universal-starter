@@ -2,9 +2,13 @@
 
 A NG-ZORRO starter for Universal using the Angular CLI
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm install` or `yarn`
+
+## Development
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Build
 
