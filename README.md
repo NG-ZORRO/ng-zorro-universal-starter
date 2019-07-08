@@ -16,8 +16,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ### Pre-render
 
-Run `npm run build:prerender && npm run serve:prerender`. Navigate to `http://localhost:4000/`.
+Run `npm run build:prerender && npm run serve:prerender`. Navigate to `http://localhost:8080/`.
 
 ### Server-side Rendering (SSR)
 
-Run `npm run build:ssr && npm run serve:ssr`. Navigate to `http://localhost:8080/`.
+Run `npm run build:ssr && npm run serve:ssr`. Navigate to `http://localhost:4000/`.
