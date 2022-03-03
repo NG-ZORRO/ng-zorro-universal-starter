@@ -2,16 +2,14 @@
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="emailErrors">
           <input nz-input formControlName="email" id="email" />
-          <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors">
-            The input is not valid E-mail!
-          </nz-form-explain>
+          <ng-template #emailErrors>The input is not valid E-mail!</ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="passwordErrors">
           <input
             nz-input
             type="password"
@@ -19,25 +17,21 @@
             formControlName="password"
             (ngModelChange)="updateConfirmValidator()"
           />
-          <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors"
-            >Please input your password!</nz-form-explain
-          >
+          <ng-template #passwordErrors>Please input your password!</ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirm Password</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="checkPasswordErrors">
           <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
-          <nz-form-explain
-            *ngIf="validateForm.get('checkPassword')?.dirty && validateForm.get('checkPassword')?.errors"
-          >
-            <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('required')">
+          <ng-template #checkPasswordErrors let-control>
+            <ng-container *ngIf="control.hasError('required')">
               Please confirm your password!
             </ng-container>
-            <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('confirm')">
+            <ng-container *ngIf="control.hasError('confirm')">
               Two passwords that you enter is inconsistent!
             </ng-container>
-          </nz-form-explain>
+          </ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
@@ -47,22 +41,20 @@
             <i
               nz-icon
               nz-tooltip
-              nzTitle="What do you want other to call you"
+              nzTooltipTitle="What do you want other to call you"
               type="question-circle"
               theme="outline"
             ></i>
           </span>
         </nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="nicknameErrors">
           <input nz-input id="nickname" formControlName="nickname" />
-          <nz-form-explain *ngIf="validateForm.get('nickname')?.dirty && validateForm.get('nickname')?.errors"
-            >Please input your nickname!</nz-form-explain
-          >
+          <ng-template #nicknameErrors>Please input your nickname!</ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="validateForm.controls['phoneNumber']">
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="validateForm.controls['phoneNumber']" [nzErrorTip]="phoneNumberErrors">
           <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
             <ng-template #addOnBeforeTemplate>
               <nz-select formControlName="phoneNumberPrefix" style="width: 70px;">
@@ -72,23 +64,19 @@
             </ng-template>
             <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
           </nz-input-group>
-          <nz-form-explain *ngIf="validateForm.get('phoneNumber')?.dirty && validateForm.get('phoneNumber')?.errors"
-            >Please input your phone number!</nz-form-explain
-          >
+          <ng-template #phoneNumberErrors>Please input your phone number!</ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website" nzRequired>Website</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="websiteErrors">
           <input nz-input id="website" formControlName="website" placeholder="website" />
-          <nz-form-explain *ngIf="validateForm.get('website')?.dirty && validateForm.get('website')?.errors"
-            >Please input website!</nz-form-explain
-          >
+          <ng-template #websiteErrors>Please input website!</ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="captcha" nzRequired>Captcha</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzExtra]="captchaDescription" [nzErrorTip]="captchaErrors">
           <div nz-row [nzGutter]="8">
             <div nz-col [nzSpan]="12">
               <input nz-input formControlName="captcha" id="captcha" />
@@ -97,10 +85,8 @@
               <button nz-button (click)="getCaptcha($event)">Get captcha</button>
             </div>
           </div>
-          <nz-form-explain *ngIf="validateForm.get('captcha')?.dirty && validateForm.get('captcha')?.errors"
-            >Please input the captcha you got!</nz-form-explain
-          >
-          <nz-form-extra>We must make sure that your are a human.</nz-form-extra>
+          <ng-template #captchaErrors>Please input the captcha you got!</ng-template>
+          <ng-template #captchaDescription>We must make sure that you are a human.</ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item nz-row style="margin-bottom:8px;">

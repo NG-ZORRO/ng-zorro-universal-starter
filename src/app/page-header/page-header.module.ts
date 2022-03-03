@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NzPageHeaderModule, NzTabsModule, NzTagModule } from 'ng-zorro-antd'
-import { SharedModule } from '../shared.module'
+
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+
+import { SharedModule } from '../shared.module';
 
 import { PageHeaderRoutingModule } from './page-header-routing.module';
 import { PageHeaderActionsComponent } from './page-header-actions.component';
@@ -14,8 +18,7 @@ import { PageHeaderActionsComponent } from './page-header-actions.component';
     SharedModule,
     NzPageHeaderModule,
     NzTabsModule,
-    NzTagModule
-
-  ]
+    NzTagModule,
+  ],
 })
-export class PageHeaderModule { }
+export class PageHeaderModule {}
