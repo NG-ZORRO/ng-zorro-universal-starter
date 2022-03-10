@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NzDividerModule, NzTableModule } from 'ng-zorro-antd'
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzTableModule } from 'ng-zorro-antd/table';
+
 import { TableComponent } from './table.component';
-import { TableRoutingModule } from './table-routing.module'
+import { TableRoutingModule } from './table-routing.module';
 
 @NgModule({
   declarations: [TableComponent],
-  imports: [
-    CommonModule,
-    TableRoutingModule,
-    NzTableModule,
-    NzDividerModule
-  ]
+  imports: [CommonModule, TableRoutingModule, NzTableModule, NzDividerModule],
 })
-export class TableModule { }
+export class TableModule {}
